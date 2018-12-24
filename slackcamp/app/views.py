@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from app.models import UserProfileInfo
+from django import forms
 from app.forms import UserForm,UserProfileInfoForm
 
 from django.contrib.auth import authenticate,login, logout
@@ -75,8 +76,8 @@ def user_login(request):
             else:
                 return HttpResponse("Inactive af!")
         else:
-            print("Somthing fishy.")
-            return HttpResponse("Invalid login details!")
+            return HttpResponseRedirect(reverse('app:login'))
+
 
     else:
         return render(request,'app/login.html')
