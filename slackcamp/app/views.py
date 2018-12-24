@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from app.models import UserProfileInfo
-from django import forms
+from django.contrib import messages
 from app.forms import UserForm,UserProfileInfoForm
 
 from django.contrib.auth import authenticate,login, logout
@@ -76,6 +76,7 @@ def user_login(request):
             else:
                 return HttpResponse("Inactive af!")
         else:
+            messages.add_message(request,messages.ERROR,"Invalid Login!")
             return HttpResponseRedirect(reverse('app:login'))
 
 
