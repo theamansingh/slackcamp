@@ -1,7 +1,8 @@
 {% extends "app/base.html" %}
 {% block body_block %}
-
-  <h1>Please Login</h1>
+  <title>Login Page</title>
+  <h3>Please Login</h3>
+  <br>
 
 
   {% for message in messages %}
@@ -11,7 +12,7 @@
   <form action="{% url 'app:login' %}" method="post">
     {% csrf_token %}
     <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="username">
 
     <label for="password">Password:</label>
     <input type="password" name="password">
@@ -19,4 +20,4 @@
     <input type="submit"  value="Submit">
   </form>
 
-  {% endblock %}
+{% endblock %}

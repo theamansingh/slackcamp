@@ -2,13 +2,10 @@ from django.shortcuts import render
 from app.models import UserProfileInfo
 from django.contrib import messages
 from app.forms import UserForm,UserProfileInfoForm
-
 from django.contrib.auth import authenticate,login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
-
 # Create your views here.
 def index(request):
     return render(request,'app/index.html')
@@ -22,9 +19,6 @@ def user_logout(request):
 def materials(request):
     return render(request,'app/materials.html')
 
-
-def base(request):
-    return render(request,'app/base.html')
 
 def register(request):
 
@@ -42,7 +36,7 @@ def register(request):
 
 
             profile = profile_form.save(commit=False)
-            profile.user = user
+            profile.user = user #OneToOne
 
             if 'profile_pic' in request.FILES:
                 profile.profile_pic = request.FILES['profile_pic']
